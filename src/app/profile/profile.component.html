@@ -1,0 +1,122 @@
+<div class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow">
+      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-gray-900">My Profile</h1>
+      </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+      <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Profile Card -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+          <div class="px-4 py-5 sm:px-6 flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="h-24 w-24 rounded-full overflow-hidden bg-gray-100">
+                <img src="assets/profile-image.jpg" alt="Profile picture" class="h-full w-full object-cover">
+              </div>
+              <div class="ml-6">
+                <h2 class="text-2xl font-bold text-gray-900">Sarah Johnson</h2>
+                <p class="text-sm text-gray-500">Frontend Developer & Technical Writer</p>
+              </div>
+            </div>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md">
+              Edit Profile
+            </button>
+          </div>
+          
+          <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
+            <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+              <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Email</dt>
+                <dd class="mt-1 text-sm text-gray-900">sarah.johnsonexample.com</dd>
+              </div>
+              <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Location</dt>
+                <dd class="mt-1 text-sm text-gray-900">San Francisco, CA</dd>
+              </div>
+              <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Member since</dt>
+                <dd class="mt-1 text-sm text-gray-900">March 2020</dd>
+              </div>
+              <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Posts published</dt>
+                <dd class="mt-1 text-sm text-gray-900">42</dd>
+              </div>
+              <div class="sm:col-span-2">
+                <dt class="text-sm font-medium text-gray-500">Bio</dt>
+                <dd class="mt-1 text-sm text-gray-900">
+                  Frontend developer with 5+ years of experience specializing in Angular and React. 
+                  Passionate about creating accessible and performant web applications. 
+                  When I'm not coding, you'll find me hiking or experimenting with new recipes.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <dt class="text-sm font-medium text-gray-500 truncate">Total Likes</dt>
+              <dd class="mt-1 text-3xl font-semibold text-gray-900">1.2k</dd>
+            </div>
+          </div>
+          <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <dt class="text-sm font-medium text-gray-500 truncate">Comments</dt>
+              <dd class="mt-1 text-3xl font-semibold text-gray-900">368</dd>
+            </div>
+          </div>
+          <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <dt class="text-sm font-medium text-gray-500 truncate">Followers</dt>
+              <dd class="mt-1 text-3xl font-semibold text-gray-900">2.4k</dd>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recent Posts -->
+        <div class="mt-8">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold text-gray-900">Recent Posts</h2>
+            <a href="/blog" class="text-blue-600 hover:text-blue-800 text-sm font-medium">View all</a>
+          </div>
+          <div class="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+              <img src="assets/post-1.jpg" alt="Post image" class="h-48 w-full object-cover">
+              <div class="p-4">
+                <h3 class="text-lg font-medium text-gray-900">Getting Started with Angular 17</h3>
+                <p class="mt-1 text-sm text-gray-500">April 15, 2025</p>
+                <p class="mt-2 text-sm text-gray-600 line-clamp-3">
+                  Explore the latest features in Angular 17 and how they can improve your development workflow...
+                </p>
+              </div>
+            </div>
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+              <img src="assets/post-2.jpg" alt="Post image" class="h-48 w-full object-cover">
+              <div class="p-4">
+                <h3 class="text-lg font-medium text-gray-900">Tailwind CSS Best Practices</h3>
+                <p class="mt-1 text-sm text-gray-500">April 3, 2025</p>
+                <p class="mt-2 text-sm text-gray-600 line-clamp-3">
+                  Learn how to structure your Tailwind CSS code for maintainability and performance...
+                </p>
+              </div>
+            </div>
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+              <img src="assets/post-3.jpg" alt="Post image" class="h-48 w-full object-cover">
+              <div class="p-4">
+                <h3 class="text-lg font-medium text-gray-900">Building a State Management System</h3>
+                <p class="mt-1 text-sm text-gray-500">March 27, 2025</p>
+                <p class="mt-2 text-sm text-gray-600 line-clamp-3">
+                  A deep dive into building your own lightweight state management for Angular applications...
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
