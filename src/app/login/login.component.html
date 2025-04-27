@@ -1,38 +1,77 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-4xl grid grid-cols-1 md:grid-cols-2">
-      
-      <!-- Left Panel -->
-      <div class="bg-teal-500 text-white p-10 flex flex-col justify-center relative">
-        <div class="absolute top-6 left-6 text-white font-bold text-lg">🌐 Diprella</div>
-        <h2 class="text-3xl font-bold mb-4">Welcome Back!</h2>
-        <p class="mb-6 text-white/90">To keep connected with us please login with your personal info</p>
-        <button class="bg-transparent border border-white px-6 py-2 rounded-full text-white hover:bg-white hover:text-teal-500 transition">
-          SIGN IN
+<div class="flex min-h-screen items-center justify-center bg-gray-100 px-4">
+  <div class="flex w-full max-w-2xl flex-col overflow-hidden rounded-lg md:h-[400px] shadow-lg md:flex-row">
+    
+  
+    <div class="relative flex w-full items-center justify-center bg-primary p-8 text-white md:w-2/4">
+      <div class="z-10 text-center md:text-left">
+        <div class="mb-8 flex items-center justify-center md:justify-start">
+          <div class="inline-flex h-10 w-10 items-center justify-center rounded border border-white p-2">
+            <i routerLink="/" class="fas fa-arrow-right cursor-pointer"></i>
+          </div>
+          <span class="ml-2 text-lg font-semibold">OneBlog</span>
+        </div>
+        
+        <div class="mb-12">
+          <h2 class="mb-3 text-3xl font-bold">Welcome Back!</h2>
+          <p class="text-sm text-teal-100">
+            Log in to continue exploring and sharing amazing stories with the world.
+          </p>
+        </div>
+        
+        <button routerLink="/register" class="mt-4 w-full rounded-full border border-white px-6 py-2 font-medium text-white transition hover:bg-teal-600">
+         REGISTER
         </button>
       </div>
-  
-      <!-- Right Panel -->
-      <div class="bg-white p-10">
-        <h2 class="text-2xl font-bold text-teal-500 text-center mb-4">Create Account</h2>
-  
-        <!-- Social Buttons -->
-        <div class="flex justify-center gap-4 mb-6">
-          <button class="bg-gray-100 p-2 rounded-full hover:bg-gray-200"><i class="fab fa-facebook-f"></i></button>
-          <button class="bg-gray-100 p-2 rounded-full hover:bg-gray-200"><i class="fab fa-google-plus-g"></i></button>
-          <button class="bg-gray-100 p-2 rounded-full hover:bg-gray-200"><i class="fab fa-linkedin-in"></i></button>
-        </div>
-  
-        <p class="text-center text-gray-500 text-sm mb-6">or use your email for registration:</p>
-  
-        <!-- Form -->
+
+      
+      <div class="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-teal-400 opacity-20"></div>
+      <div class="absolute top-44 h-8 w-8 rotate-90 bg-teal-400 opacity-20"></div>
+      <div class="absolute right-4 top-20 h-16 w-16 rotate-45 bg-teal-400 opacity-20"></div>
+    </div>
+
+    
+    <div class="w-full flex flex-col justify-center  bg-white p-8 md:w-2/4">
+      <div class="mx-auto max-w-md">
+        <h2 class="mb-8 text-center text-2xl font-bold text-primary">Login To Your Account</h2>
+
         <form class="space-y-4">
-          <input type="text" placeholder="Name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400" />
-          <input type="email" placeholder="Email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400" />
-          <input type="password" placeholder="Password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400" />
-          <button type="submit" class="w-full bg-teal-500 text-white py-2 rounded-full hover:bg-teal-600 transition">SIGN UP</button>
+          
+
+
+         
+          <div class="relative">
+            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-envelope h-5 w-5 text-gray-400"></i>
+            </div>
+            <input 
+              type="email"
+              placeholder="Email"
+              class="w-full rounded-md bg-gray-100 py-3 pl-10 pr-4 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            >
+          </div>
+
+         
+          <div class="relative">
+            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-lock h-5 w-5 text-gray-400"></i>
+            </div>
+            <input 
+              type="password"
+              placeholder="Password"
+              class="w-full rounded-md bg-gray-100 py-3 pl-10 pr-4 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            >
+          </div>
+
+          
+          <button 
+            type="button"
+            class="mt-4 w-full rounded-full bg-primary py-3 font-medium text-white transition hover:bg-teal-600"
+          >
+            LOGIN
+          </button>
         </form>
       </div>
-  
     </div>
+
   </div>
-  
+</div>

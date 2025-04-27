@@ -31,21 +31,24 @@ export class AllPostsComponent {
       image: "https://images.pexels.com/photos/1583582/pexels-photo-1583582.jpeg?auto=compress&cs=tinysrgb&w=600",
       author: "Liam Taylor",
       authorAvatar: "https://w7.pngwing.com/pngs/4/736/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon-thumbnail.png",
-      date: "Nov 29, 2024"
+      date: "Nov 29, 2024",
+      category:"tech"
     },
     {
       title: "A Food Lover's Journey: Top Culinary Destinations",
       image: "https://images.pexels.com/photos/1583582/pexels-photo-1583582.jpeg?auto=compress&cs=tinysrgb&w=600",
       author: "Liam Taylor",
       authorAvatar: "https://w7.pngwing.com/pngs/4/736/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon-thumbnail.png",
-      date: "Nov 29, 2024"
+      date: "Nov 29, 2024",
+      category:"tech"
     },
     {
       title: "A Food Lover's Journey: Top Culinary Destinations",
       image: "https://images.pexels.com/photos/1583582/pexels-photo-1583582.jpeg?auto=compress&cs=tinysrgb&w=600",
       author: "Liam Taylor",
       authorAvatar: "https://w7.pngwing.com/pngs/4/736/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon-thumbnail.png",
-      date: "Nov 29, 2024"
+      date: "Nov 29, 2024",
+      category:"tech"
     }
   ];
 
