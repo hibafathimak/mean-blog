@@ -1,0 +1,83 @@
+<div class="flex flex-col md:flex-row bg-gray-50 min-h-screen">
+   
+    <div *ngIf="isSideBarOpen" class="col-lg-2 transition-all duration-300 ease-in-out">
+      <app-sidebar></app-sidebar>
+    </div>
+  
+
+    <main class="flex-1 p-4 sm:p-6 lg:p-8">
+      <div class="max-w-7xl mx-auto">
+  
+       
+        <div class="bg-white w-full rounded-lg p-4 mb-10 shadow flex justify-between items-center">
+          <h2 class="text-primary font-bold text-lg flex items-center">
+            <i (click)="menuBtnClick()" class="fas fa-bars mr-3 cursor-pointer"></i> Admin Dashboard
+          </h2>
+          <button class="text-primary border border-primary rounded-lg md:rounded-full flex justify-center items-center px-4 py-2 hover:bg-primary hover:text-white transition">
+            <span class="hidden md:block me-2">Logout</span> <i class="fas fa-sign-out-alt "></i>
+          </button>
+        </div>
+  
+        <h1 class="text-3xl font-semibold mb-6 text-gray-800">All Posts</h1>
+        <div class="space-y-6">
+          <div class="bg-white shadow rounded-lg p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-center gap-4 min-w-[250px]">
+              <img src="https://via.placeholder.com/60" alt="Post Image" class="w-16 h-16 rounded object-cover" />
+              <div class="space-y-1">
+                <h3 class="text-lg font-semibold text-gray-800">My First Post</h3>
+                <p class="text-sm text-gray-500">By John Doe • Travel</p>
+                <p class="text-xs text-gray-400">Tags: travel, adventure</p>
+              </div>
+            </div>
+  
+            <div class="flex-1 text-gray-600 text-sm">
+              Short description about the post...
+            </div>
+            <div class="text-gray-500 text-sm min-w-[80px] text-center">
+              Reports: <strong>2</strong>
+            </div>
+  
+           
+            <div class="flex justify-center md:justify-end">
+              <button class="text-red-500 hover:text-red-700 flex items-center gap-1 px-4 py-2 rounded hover:bg-red-50 transition">
+                <i class="fas fa-trash-alt"></i> 
+              </button>
+            </div>
+  
+          </div>
+  
+         
+          <div class="bg-white shadow rounded-lg p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-center gap-4 min-w-[250px]">
+              <img src="https://via.placeholder.com/60" alt="Post Image" class="w-16 h-16 rounded object-cover" />
+              <div class="space-y-1">
+                <h3 class="text-lg font-semibold text-gray-800">Second Blog</h3>
+                <p class="text-sm text-gray-500">By Amy Smith • Lifestyle</p>
+                <p class="text-xs text-gray-400">Tags: lifestyle</p>
+              </div>
+            </div>
+  
+            <div class="flex-1 text-gray-600 text-sm">
+              Another blog post about life...
+            </div>
+  
+            <div class="text-gray-500 text-sm min-w-[80px] text-center">
+              Reports: <strong>0</strong>
+            </div>
+  
+            <div class="flex justify-center md:justify-end">
+              <button class="text-red-500 hover:text-red-700 flex items-center gap-1 px-4 py-2 rounded hover:bg-red-50 transition">
+                <i class="fas fa-trash-alt"></i> 
+              </button>
+            </div>
+  
+          </div>
+  
+    
+  
+        </div>
+  
+      </div>
+    </main>
+  </div>
+  

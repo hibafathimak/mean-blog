@@ -4,37 +4,34 @@
   <div class="border-teal-200 rounded-lg p-6 mb-8 text-center">
     <div class="flex justify-center mb-2">
       <div class="w-16 h-16 rounded-full overflow-hidden">
-        <img src="assets/author-avatar.jpg" alt="Author" class="w-full h-full object-cover" />
+        <img [src]="environment.serverUrl + '/uploads/' + blog.author?.profilePic" alt="Author" class="w-full h-full object-cover" />
       </div>
     </div>
-    <p class="text-gray-600 mb-1">Cruz Montero</p>
-    <p class="text-gray-500 text-sm mb-4">Food Critic</p>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">
-      A Foodie's Guide to Europe: Best Culinary Experiences by Country
-    </h1>
+    <p class="text-gray-600 mb-1">{{ blog.author?.username }}</p>
+    <p class="text-gray-500 text-sm mb-4">{{ blog.category }}</p>
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">{{ blog.title }}</h1>
+
+    <div class="flex flex-wrap gap-2 mb-4 justify-center">
+      <span *ngFor="let tag of blog.tags" class="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full">
+        #{{ tag }}
+      </span>
+    </div>
+
     <div class="flex justify-center items-center text-gray-500 text-sm gap-2">
       <i class="fa-solid fa-calendar"></i>
-      <span>May 29, 2025</span>
+      <span>{{ blog.createdAt | date: 'longDate' }}</span>
     </div>
   </div>
 
   <div class="mb-8">
-    <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/10/45/7a/a3.jpg" alt="Santorini, Greece"
+    <img [src]="environment.serverUrl + '/uploads/' + blog.coverImage" alt="Blog Image"
       class="w-full h-80 object-cover rounded-lg" />
   </div>
 
   <div class="space-y-8">
     <div class="mb-8">
       <p class="text-secondary border-l-2 ps-5 ms-5">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur beatae hic laboriosam ipsum assumenda quam
-        deserunt quos modi sunt? Repellendus, officia enim magni facilis consequuntur tempora magnam cumque numquam
-        eius. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus nisi at accusamus optio quos, eius
-        dolor asperiores. Nobis impedit rerum consectetur sed exercitationem? Aperiam voluptates enim dolore cum, ut
-        sed. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque libero temporibus dignissimos dolore
-        iusto voluptates repellat architecto hic sunt nemo obcaecati voluptas quam, cumque delectus totam exercitationem
-        laboriosam aliquam fugiat! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione iure sint, illo,
-        vero laudantium aliquid facilis incidunt necessitatibus minus omnis alias blanditiis earum asperiores rerum
-        vitae, reiciendis soluta officia quos!
+        {{ blog.content }}
       </p>
     </div>
   </div>
@@ -42,53 +39,56 @@
   <div class="bg-white mt-10 rounded-lg shadow-sm p-6 border border-gray-100">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 text-gray-600">
       <div class="flex flex-wrap gap-4">
-        <button class="flex items-center space-x-2 hover:text-primary transition">
+        <!-- Like Button -->
+        <button class="flex items-center space-x-2 hover:text-primary transition" [ngClass]="isLikedByUser ? 'text-primary' : 'text-gray-600'" (click)="toggleLike()">
           <i class="fa-regular fa-thumbs-up"></i>
-          <span>Like</span>
-          <span class="text-sm text-gray-500">(120)</span>
+          <span>{{ isLikedByUser ? 'Liked' : 'Like' }}</span>
+          <span class="text-sm text-gray-500">({{ blog.likes?.length || 0 }})</span>
         </button>
 
+        <!-- Comments Button -->
         <button class="flex items-center space-x-2 hover:text-primary transition">
           <i class="fa-regular fa-comment"></i>
-          <span>Comment</span>
-          <span class="text-sm text-gray-500">(36)</span>
+          <span>Comments</span>
+          <span class="text-sm text-gray-500">({{ blog.comments?.length || 0 }})</span>
         </button>
 
-        <button class="flex items-center space-x-2 hover:text-red-600 transition">
-          <i class="fa-regular fa-flag"></i>
-          <span>Report</span>
+        <!-- Report Button -->
+        <button class="flex items-center space-x-2 hover:text-red-600 transition" [ngClass]="isReportedByUser ? 'text-red-700' : 'text-gray-600'" (click)="reportPost()" [disabled]="isReportedByUser">
+          <i class="fa-regular fa-flag" ></i>
+          <span>{{ isReportedByUser ? 'Reported' : 'Report' }}</span>
         </button>
       </div>
     </div>
 
+    <!-- Comment Section -->
     <div class="mt-6">
       <label for="comment" class="block text-sm font-medium text-gray-700 mb-1">Leave a Comment</label>
       <textarea id="comment" rows="3"
+        [(ngModel)]="commentText"
         class="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-primary focus:border-primary"
         placeholder="Write your thoughts here..."></textarea>
+
       <div class="mt-2 flex justify-end">
-        <button
-          class="bg-primary  hover:bg-teal-700 text-white text-sm font-medium py-2 px-4 rounded-md transition">
+        <button (click)="postComment()"
+          class="bg-primary hover:bg-teal-700 text-white text-sm font-medium py-2 px-4 rounded-md transition">
           Post Comment
         </button>
       </div>
     </div>
 
-    <div class="mt-8 space-y-4">
+    <!-- Display Comments -->
+    <div class="mt-8 space-y-4" *ngFor="let c of blog.comments">
       <div class="border-t pt-4">
         <p class="text-sm text-gray-800">
-          <span class="font-semibold">Alex Green:</span> This guide is amazing! Can’t wait to try some of these spots in Germany.
+          <span class="font-semibold">{{ c.user.username }}:</span> {{ c.comment }}
         </p>
-        <p class="text-xs text-gray-500 mt-1">Posted on April 20, 2025</p>
-      </div>
-      <div class="border-t pt-4">
-        <p class="text-sm text-gray-800">
-          <span class="font-semibold">Lena Wills:</span> I loved the details on Santorini. Greek food is the best!
-        </p>
-        <p class="text-xs text-gray-500 mt-1">Posted on April 22, 2025</p>
+        <p class="text-xs text-gray-500 mt-1">Posted on {{ c.createdAt | date: 'mediumDate' }}</p> 
+        <button *ngIf="c.user._id === currentUserId" (click)="deleteComment(c._id)" class="text-xs text-red-500">
+          Delete
+        </button>
       </div>
     </div>
-    
   </div>
 </div>
 

@@ -1,0 +1,62 @@
+<div class="flex flex-col md:flex-row bg-gray-50 min-h-screen">
+    <div *ngIf="isSideBarOpen" class="col-lg-2 transition-all duration-300 ease-in-out">
+        <app-sidebar />
+    </div>
+
+    <main class="flex-1 min-h-screen p-4 sm:p-6 lg:p-8">
+        <div [class]="columnWidth" class="max-w-7xl mx-auto">
+
+                <div class="bg-white w-full rounded-lg p-4 mb-10 shadow flex justify-between items-center">
+                    <h2 class="text-primary font-bold text-lg flex items-center">
+                      <i (click)="menuBtnClick()" class="fas fa-bars mr-3 cursor-pointer"></i> Admin Dashboard
+                    </h2>
+                    <button class="text-primary border border-primary rounded-lg md:rounded-full flex justify-center items-center px-4 py-2 hover:bg-primary hover:text-white transition">
+                      <span class="hidden md:block me-2">Logout</span> <i class="fas fa-sign-out-alt "></i>
+                    </button>
+                  </div>
+
+            <h1 class="text-3xl font-semibold mb-6">All Messages</h1>
+
+
+            <div class="bg-white shadow-lg rounded-lg p-4 overflow-x-auto">
+                <table class="min-w-full text-gray-700 text-sm md:text-base">
+                    <thead class="bg-gray-100">
+                        <tr>
+
+                            <th class="px-4 py-2 text-left whitespace-nowrap">Name</th>
+                            <th class="px-4 py-2 text-left whitespace-nowrap">Email</th>
+                            <th class="px-4 py-2 text-left whitespace-nowrap">Phone</th>
+                            <th class="px-4 py-2 text-left whitespace-nowrap">Message</th>
+                            <th class="px-4 py-2 text-left whitespace-nowrap">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+
+                            <td class="px-4 py-2 whitespace-nowrap">John Doe</td>
+                            <td class="px-4 py-2 whitespace-nowrap">johnample.com</td>
+                            <td class="px-4 py-2 whitespace-nowrap">1</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Admin</td>
+                            <td class="px-4 py-2 whitespace-nowrap">
+                                <button class="text-red-500 hover:text-red-700 flex items-center gap-1 px-4 py-2 rounded hover:bg-red-50 transition">
+                                    <i class="fas fa-trash-alt"></i> 
+                                  </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="px-4 py-2 whitespace-nowrap">2</td>
+                            <td class="px-4 py-2 whitespace-nowrap">Amy Smith</td>
+                            <td class="px-4 py-2 whitespace-nowrap">amyexample.com</td>
+                            <td class="px-4 py-2 whitespace-nowrap">User</td>
+                            <td class="px-4 py-2 whitespace-nowrap">
+                                <button class="text-red-500 hover:text-red-700 flex items-center gap-1 px-4 py-2 rounded hover:bg-red-50 transition">
+                                    <i class="fas fa-trash-alt"></i> 
+                                  </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>

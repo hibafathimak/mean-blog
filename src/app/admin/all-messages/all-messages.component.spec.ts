@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManagePostComponent } from './manage-post.component';
+import { AllMessagesComponent } from './all-messages.component';
 
-describe('ManagePostComponent', () => {
-  let component: ManagePostComponent;
-  let fixture: ComponentFixture<ManagePostComponent>;
+describe('AllMessagesComponent', () => {
+  let component: AllMessagesComponent;
+  let fixture: ComponentFixture<AllMessagesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ManagePostComponent]
+      declarations: [AllMessagesComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ManagePostComponent);
+    fixture = TestBed.createComponent(AllMessagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
