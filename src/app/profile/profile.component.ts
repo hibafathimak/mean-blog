@@ -11,13 +11,14 @@ import {environment}  from '../../environments/environment';
   standalone: true,
   imports: [HeaderComponent, FooterComponent, RouterLink,DatePipe,NgFor,NgIf],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+
 })
 export class ProfileComponent {
   profileImg: string = 'https://www.vhv.rs/dpng/d/436-4363443_view-user-icon-png-font-awesome-user-circle.png'; // Make sure this path is correct for your assets structure
   userDetails: any = {};
   posts: any[] = [];
   environment = environment;
+  loading: boolean = false;
   
   constructor(private api: ApiService, private router: Router) { }
   
@@ -27,6 +28,7 @@ export class ProfileComponent {
   }
   
   getProfile() {
+    this.loading=true
     this.api.getProfile().subscribe({
       next: (res: any) => {
         this.userDetails = res;
@@ -34,9 +36,11 @@ export class ProfileComponent {
           if (this.userDetails.profilePic) {
           this.profileImg = `${this.api.serverUrl}/uploads/${this.userDetails.profilePic}`;
         }
+        this.loading=false
       },
       error: (err) => {
         console.error('Error loading profile:', err);
+        this.loading=false
       }
     });
   }

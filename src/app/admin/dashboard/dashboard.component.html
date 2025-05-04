@@ -6,7 +6,7 @@
 
   
     <main class="flex-1 p-4 sm:p-6 lg:p-8">
-        <div class="max-w-7xl mx-auto">
+        <div [class]="columnWidth" class="max-w-7xl mx-auto">
             
             <div class="bg-white w-full rounded-lg p-4 mb-10 shadow flex justify-between items-center">
                 <h2 class="text-primary font-bold text-lg flex items-center">
@@ -23,7 +23,7 @@
                 <div class="bg-white shadow rounded-xl p-6 border-l-4 border-teal-500 flex items-center justify-between hover:shadow-lg transition">
                     <div>
                         <h2 class="text-lg font-semibold text-gray-700">Total Users</h2>
-                        <p class="text-3xl font-bold text-teal-600">123</p>
+                        <p class="text-3xl font-bold text-teal-600">{{userCount}}</p>
                     </div>
                     <div class="p-3 bg-teal-50 rounded-full flex items-center justify-center w-12 h-12">
                         <i class="fa-solid fa-users text-teal-500 text-xl"></i>
@@ -33,7 +33,7 @@
                 <div class="bg-white shadow rounded-xl p-6 border-l-4 border-teal-500 flex items-center justify-between hover:shadow-lg transition">
                     <div>
                         <h2 class="text-lg font-semibold text-gray-700">Total Blogs</h2>
-                        <p class="text-3xl font-bold text-teal-600">87</p>
+                        <p class="text-3xl font-bold text-teal-600">{{blogCount}}</p>
                     </div>
                     <div class="p-3 bg-teal-50 rounded-full flex items-center justify-center w-12 h-12">
                         <i class="fa-solid fa-file-alt text-teal-500 text-xl"></i>
@@ -43,7 +43,7 @@
                 <div class="bg-white shadow rounded-xl p-6 border-l-4 border-teal-500 flex items-center justify-between hover:shadow-lg transition">
                     <div>
                         <h2 class="text-lg font-semibold text-gray-700">Comments</h2>
-                        <p class="text-3xl font-bold text-teal-600">456</p>
+                        <p class="text-3xl font-bold text-teal-600">{{commentCount}}</p>
                     </div>
                     <div class="p-3 bg-teal-50 rounded-full flex items-center justify-center w-12 h-12">
                         <i class="fa-solid fa-comment text-teal-500 text-xl"></i>
@@ -53,7 +53,7 @@
                 <div class="bg-white shadow rounded-xl p-6 border-l-4 border-teal-500 flex items-center justify-between hover:shadow-lg transition">
                     <div>
                         <h2 class="text-lg font-semibold text-gray-700">Reports</h2>
-                        <p class="text-3xl font-bold text-teal-600">12</p>
+                        <p class="text-3xl font-bold text-teal-600">{{reportCount}}</p>
                     </div>
                     <div class="p-3 bg-teal-50 rounded-full flex items-center justify-center w-12 h-12">
                         <i class="fa-solid fa-circle-exclamation text-teal-600 text-xl"></i>

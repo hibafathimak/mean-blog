@@ -12,13 +12,13 @@ import { HeaderComponent } from '../header/header.component';
   standalone: true,
   imports: [FooterComponent, HeaderComponent, NgFor, NgIf, DatePipe, FormsModule,NgClass],
   templateUrl: './post.component.html',
-  styleUrl: './post.component.css'
 })
 export class PostComponent {
   blogId: string | null = null;
   blog: any = {};
   environment = environment;
   commentText = '';
+  loading: boolean = false;
   currentUserId :any = ''
 
   constructor(private route: ActivatedRoute, private api: ApiService) {}
@@ -36,9 +36,10 @@ export class PostComponent {
 
   getBlog() {
     if (!this.blogId) return;
+    this.loading=true
     this.api.getSingleBlogApi(this.blogId).subscribe((res: any) => {
       this.blog = res;
-      console.log(res)
+      this.loading=false
     });
 
   }

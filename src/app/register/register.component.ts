@@ -8,7 +8,6 @@ import { ApiService } from '../services/api.service';
   standalone: true,
   imports: [RouterLink,ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
 })
 export class RegisterComponent {
   registerForm: FormGroup

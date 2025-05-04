@@ -7,7 +7,6 @@ import { Router, RouterLink } from '@angular/router';
   standalone: true,
   imports: [NgClass, RouterLink, NgIf],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   isMenuOpen: boolean = false;

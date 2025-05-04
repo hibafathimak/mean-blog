@@ -8,6 +8,7 @@ import { AllPostsComponent } from './all-posts/all-posts.component';
 import { AllCommentsComponent } from './all-comments/all-comments.component';
 import { AllMessagesComponent } from './all-messages/all-messages.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AllCommentsComponent,
     AllMessagesComponent,
     SidebarComponent,
+    NavbarComponent,
   ],
   imports: [
     CommonModule,

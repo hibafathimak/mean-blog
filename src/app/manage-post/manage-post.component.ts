@@ -11,32 +11,34 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule, HeaderComponent, FooterComponent, ReactiveFormsModule],
   templateUrl: './manage-post.component.html',
-  styleUrl: './manage-post.component.css'
 })
 export class ManagePostComponent implements OnInit {
   @Input() id!: string;
-
+  loading:boolean=false
   blogForm!: FormGroup;
   selectedcoverImg: File | null = null;
   coverImageUrl: string = '';
 
-  constructor(private fb: FormBuilder, private api: ApiService,private router :Router) {}
-
-
-  ngOnInit() {
+  constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
     this.blogForm = this.fb.group({
       title: [''],
       content: [''],
       category: [''],
       tags: ['']
     });
-  
+  }
+
+  ngOnInit() {this.getBlogDetails()}
+
+  getBlogDetails() {
+    this.loading=true
     if (this.id) {
       this.api.getSingleBlogApi(this.id).subscribe((res: any) => {
         this.blogForm.patchValue(res);
         if (res.coverImage) {
           this.coverImageUrl = `${this.api.serverUrl}/uploads/${res.coverImage}`;
         }
+        this.loading=false
       });
     }
   }

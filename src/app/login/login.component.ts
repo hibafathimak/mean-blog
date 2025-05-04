@@ -9,7 +9,6 @@ import { ApiService } from '../services/api.service';
   standalone: true,
   imports: [RouterLink,ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
 })
 export class LoginComponent {
   loginForm: FormGroup
@@ -26,9 +25,13 @@ export class LoginComponent {
       this.api.loginApi({ email, password }).subscribe({
         next: (res: any) => {
           alert("Login Successful")
-          sessionStorage.setItem("user",JSON.stringify(res.user))
           sessionStorage.setItem("token",res.token)
-          this.router.navigateByUrl('/')
+          if(res.user.role=="User"){
+            this.router.navigateByUrl('/')
+            sessionStorage.setItem("user",JSON.stringify(res.user))
+          }else{
+            this.router.navigateByUrl('/admin')
+          }
           this.loginForm.reset()
         },
         error: (reason: any)=>{
