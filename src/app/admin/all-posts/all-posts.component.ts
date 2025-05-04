@@ -1,19 +1,44 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-all-posts',
   templateUrl: './all-posts.component.html',
-  styleUrl: './all-posts.component.css'
+  styleUrl: './all-posts.component.css',
 })
 export class AllPostsComponent {
-isSideBarOpen: boolean = false;
-  columnWidth: string = "col-lg-12 p-0";
+  AllBlogs: any;
+  searchKey: string = '';
+  environment = environment;
+  p: number = 1; 
 
-  constructor() {}
+  constructor(private api: ApiService) {}
 
-  menuBtnClick() {
-    this.isSideBarOpen = !this.isSideBarOpen;
-    // Adjust column width based on sidebar state
-    this.columnWidth = this.isSideBarOpen ? "col-lg-10 p-0" : "col-lg-12 p-0";
+  ngOnInit() {
+    this.getBlogs();
+  }
+
+
+  toggleContent(blog: any): void {
+    blog.expanded = !blog.expanded;
+  }
+  
+
+  getBlogs() {
+    this.api.getBlogsApi().subscribe((res: any) => {
+      this.AllBlogs = res;
+      console.log(this.AllBlogs);
+    });
+  }
+
+  deleteBlog(blogId: string) {
+    const confirmResult = confirm('Do you want to delete this Blog?');
+    if (confirmResult) {
+      this.api.deleteBlogApi(blogId).subscribe((res: any) => {
+        alert(res);
+        this.getBlogs();
+      });
+    }
   }
 }

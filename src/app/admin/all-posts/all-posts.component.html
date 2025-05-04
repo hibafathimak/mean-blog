@@ -1,83 +1,92 @@
-<div class="flex flex-col md:flex-row bg-gray-50 min-h-screen">
-   
-    <div *ngIf="isSideBarOpen" class="col-lg-2 transition-all duration-300 ease-in-out">
-      <app-sidebar></app-sidebar>
-    </div>
-  
+<main class="bg-gray-50 min-h-screen p-4 sm:p-6">
+  <div class="max-w-7xl mx-auto">
+    <app-nav></app-nav>
 
-    <main class="flex-1 p-4 sm:p-6 lg:p-8">
-      <div class="max-w-7xl mx-auto">
-  
-       
-        <div class="bg-white w-full rounded-lg p-4 mb-10 shadow flex justify-between items-center">
-          <h2 class="text-primary font-bold text-lg flex items-center">
-            <i (click)="menuBtnClick()" class="fas fa-bars mr-3 cursor-pointer"></i> Admin Dashboard
-          </h2>
-          <button class="text-primary border border-primary rounded-lg md:rounded-full flex justify-center items-center px-4 py-2 hover:bg-primary hover:text-white transition">
-            <span class="hidden md:block me-2">Logout</span> <i class="fas fa-sign-out-alt "></i>
-          </button>
+    <!-- Header + Search -->
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+      <h1 class="text-2xl font-bold text-gray-800 w-full md:w-auto text-center md:text-left">
+        All Blogs
+      </h1>
+
+      <input
+        [(ngModel)]="searchKey"
+        type="text"
+        placeholder="Search Blog or Tags"
+        class="w-full md:w-1/3 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
+      />
+    </div>
+
+    <!-- Blog Cards -->
+    <div class="space-y-6">
+      <div
+        *ngFor="let blog of AllBlogs | search : searchKey | paginate: { itemsPerPage: 4, currentPage: p }"
+        class="bg-white p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col md:flex-row gap-6"
+      >
+        <!-- Blog Image -->
+        <div class="md:w-1/3 w-full flex flex-col items-center gap-4">
+          <img
+            [src]="environment.serverUrl + '/uploads/' + blog.coverImage"
+            alt="Post Image"
+            class="w-full h-48 sm:h-56 object-cover rounded-lg shadow-sm"
+          />
         </div>
-  
-        <h1 class="text-3xl font-semibold mb-6 text-gray-800">All Posts</h1>
-        <div class="space-y-6">
-          <div class="bg-white shadow rounded-lg p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div class="flex items-center gap-4 min-w-[250px]">
-              <img src="https://via.placeholder.com/60" alt="Post Image" class="w-16 h-16 rounded object-cover" />
-              <div class="space-y-1">
-                <h3 class="text-lg font-semibold text-gray-800">My First Post</h3>
-                <p class="text-sm text-gray-500">By John Doe • Travel</p>
-                <p class="text-xs text-gray-400">Tags: travel, adventure</p>
+
+        <!-- Blog Content & Actions -->
+        <div class="flex-1 flex flex-col justify-between gap-4">
+          <!-- Title, Meta, Tags, Reports, Delete -->
+          <div class="flex flex-col sm:flex-row justify-between items-start  gap-4">
+            <div class="space-y-1">
+              <h3 class="text-lg font-semibold text-gray-800">{{ blog.title }}</h3>
+              <p class="text-sm text-gray-500">
+                By {{ blog.author.username }} • {{ blog.category }}
+              </p>
+              <div class="flex flex-wrap gap-1">
+                <span
+                  *ngFor="let tag of blog.tags"
+                  class="bg-gray-100 text-xs text-gray-600 px-2 py-0.5 rounded-md"
+                >
+                  #{{ tag }}
+                </span>
               </div>
             </div>
-  
-            <div class="flex-1 text-gray-600 text-sm">
-              Short description about the post...
-            </div>
-            <div class="text-gray-500 text-sm min-w-[80px] text-center">
-              Reports: <strong>2</strong>
-            </div>
-  
-           
-            <div class="flex justify-center md:justify-end">
-              <button class="text-red-500 hover:text-red-700 flex items-center gap-1 px-4 py-2 rounded hover:bg-red-50 transition">
-                <i class="fas fa-trash-alt"></i> 
-              </button>
-            </div>
-  
-          </div>
-  
-         
-          <div class="bg-white shadow rounded-lg p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div class="flex items-center gap-4 min-w-[250px]">
-              <img src="https://via.placeholder.com/60" alt="Post Image" class="w-16 h-16 rounded object-cover" />
-              <div class="space-y-1">
-                <h3 class="text-lg font-semibold text-gray-800">Second Blog</h3>
-                <p class="text-sm text-gray-500">By Amy Smith • Lifestyle</p>
-                <p class="text-xs text-gray-400">Tags: lifestyle</p>
+
+            <div class="flex w-full md:w-auto justify-between flex-row items-center sm:gap-6 sm:ml-0">
+              <div class="text-center text-sm text-gray-500">
+                <span class="font-medium me-2">Reports :</span>
+                <strong class="text-red-600 text-lg">{{ blog.reports.length }}</strong>
               </div>
-            </div>
-  
-            <div class="flex-1 text-gray-600 text-sm">
-              Another blog post about life...
-            </div>
-  
-            <div class="text-gray-500 text-sm min-w-[80px] text-center">
-              Reports: <strong>0</strong>
-            </div>
-  
-            <div class="flex justify-center md:justify-end">
-              <button class="text-red-500 hover:text-red-700 flex items-center gap-1 px-4 py-2 rounded hover:bg-red-50 transition">
-                <i class="fas fa-trash-alt"></i> 
+
+              <button
+                (click)="deleteBlog(blog._id)"
+                class="text-red-500  hover:text-red-600  rounded-md text-sm transition-all"
+              >
+                <i class="fas fa-trash-alt"></i>
               </button>
             </div>
-  
           </div>
-  
-    
-  
+
+          <!-- Blog Content -->
+          <div class="text-sm text-gray-700">
+            <p [ngClass]="{ 'line-clamp-3': !blog.expanded }">
+              {{ blog.content }}
+            </p>
+            <button
+              (click)="toggleContent(blog)"
+              class="mt-2 text-blue-600 hover:underline text-sm"
+            >
+              {{ blog.expanded ? "Show Less" : "Show More" }}
+            </button>
+          </div>
         </div>
-  
       </div>
-    </main>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-10">
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="ng-pagination"
+      ></pagination-controls>
+    </div>
   </div>
-  
+</main>

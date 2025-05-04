@@ -8,16 +8,16 @@
     <span class="text-primary">One</span>Blog
   </h2>
 
-  <!-- Navigation Links -->
-  <ul
+
+  <div
     [ngClass]="{ flex: isMenuOpen, hidden: !isMenuOpen }"
-    class="absolute ps-3 md:static top-16 left-0 w-[60%] md:w-1/2 bg-white shadow-md md:shadow-none md:flex md:flex-row flex-col justify-evenly md:items-center rounded-lg hidden z-20"
+    class="absolute ps-3 md:static top-16 left-0 w-[60%] md:w-1/2 bg-white shadow-md md:shadow-none font-semibold text-lg md:flex md:flex-row flex-col justify-evenly md:items-center rounded-lg hidden z-20"
   >
-    <li routerLink="/" class="p-4 hover:text-primary cursor-pointer font-semibold text-lg">Home</li>
-    <li routerLink="/all-blogs" class="p-4 hover:text-primary cursor-pointer font-semibold text-lg">Blogs</li>
-    <li routerLink="/about" class="p-4 hover:text-primary cursor-pointer font-semibold text-lg">About</li>
-    <li routerLink="/contact" class="p-4 hover:text-primary cursor-pointer font-semibold text-lg">Contact</li>
-  </ul>
+    <a routerLink="/" routerLinkActive="text-primary" [routerLinkActiveOptions]="{ exact: true }" class="p-4 hover:text-primary cursor-pointer ">Home</a>
+    <a routerLink="/all-blogs" routerLinkActive="text-primary" class="p-4 hover:text-primary cursor-pointer font-semibold text-lg">Blogs</a>
+    <a routerLink="/about" routerLinkActive="text-primary" class="p-4 hover:text-primary cursor-pointer font-semibold text-lg">About</a>
+    <a routerLink="/contact" routerLinkActive="text-primary" class="p-4 hover:text-primary cursor-pointer font-semibold text-lg">Contact</a>
+  </div>
 
 
   <div class="relative">

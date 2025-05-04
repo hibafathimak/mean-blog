@@ -1,11 +1,11 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgClass, RouterLink, NgIf],
+  imports: [NgClass, RouterLink, NgIf,RouterModule],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {

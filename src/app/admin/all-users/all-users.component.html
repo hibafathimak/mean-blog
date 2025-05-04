@@ -1,11 +1,6 @@
-<div class="flex flex-col md:flex-row bg-gray-50 min-h-screen">
-    
-    <div  class="col-lg-2 transition-all duration-300 ease-in-out">
-        <app-sidebar />
-    </div>
-
-    <main class="flex-1 min-h-screen p-4 sm:p-6 lg:p-8">
-        <div  class="col-lg-12 p-0 max-w-7xl mx-auto">
+<main class="bg-gray-50 min-h-screen p-4 sm:p-6">
+    <div class="max-w-7xl mx-auto">
+        <app-nav/>
             <h1 class="text-3xl font-semibold mb-6">All Users</h1>
 
            
@@ -21,24 +16,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-t">
-                            <td class="px-4 py-2 whitespace-nowrap">1</td>
-                            <td class="px-4 py-2 whitespace-nowrap">John Doe</td>
-                            <td class="px-4 py-2 whitespace-nowrap">johnample.com</td>
-                            <td class="px-4 py-2 whitespace-nowrap">Admin</td>
+                        <tr *ngFor="let user of users; let i = index" class="border-t">
+                            <td class="px-4 py-2 whitespace-nowrap">{{i+1}}</td>
+                            <td class="px-4 py-2 whitespace-nowrap">{{user.username}}</td>
+                            <td class="px-4 py-2 whitespace-nowrap">{{user.username}}</td>
+                            <td class="px-4 py-2 whitespace-nowrap">{{user.createdAt | date :"mediumDate"}}</td>
                             <td class="px-4 py-2 whitespace-nowrap">
-                                <button class="text-red-500 hover:text-red-700 flex items-center gap-1 px-4 py-2 rounded hover:bg-red-50 transition">
-                                    <i class="fas fa-trash-alt"></i> 
-                                  </button>
-                            </td>
-                        </tr>
-                        <tr class="border-t">
-                            <td class="px-4 py-2 whitespace-nowrap">2</td>
-                            <td class="px-4 py-2 whitespace-nowrap">Amy Smith</td>
-                            <td class="px-4 py-2 whitespace-nowrap">amyexample.com</td>
-                            <td class="px-4 py-2 whitespace-nowrap">User</td>
-                            <td class="px-4 py-2 whitespace-nowrap">
-                                <button class="text-red-500 hover:text-red-700 flex items-center gap-1 px-4 py-2 rounded hover:bg-red-50 transition">
+                                <button (click)="deleteUser(user._id,user.username)" class="text-red-500 hover:text-red-700 flex items-center gap-1 px-4 py-2 rounded hover:bg-red-50 transition">
                                     <i class="fas fa-trash-alt"></i> 
                                   </button>
                             </td>
@@ -48,4 +32,4 @@
             </div>
         </div>
     </main>
-</div>
+

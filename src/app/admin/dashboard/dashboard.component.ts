@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  isSideBarOpen: boolean = false;
-  columnWidth: string = "col-lg-12 p-0";
-
+  environment=environment
   userCount: number = 0;
   blogCount: number = 0;
   commentCount: number = 0;
@@ -26,17 +24,8 @@ export class DashboardComponent implements OnInit {
     this.getUserCount()
     this.getCommentCount()
     this.getReportCount()
-  }
-
-  menuBtnClick() {
-    this.isSideBarOpen = !this.isSideBarOpen;
-    this.columnWidth = this.isSideBarOpen ? "col-lg-10 p-0" : "col-lg-12 p-0";
-  }
-
-  logout() {
-    sessionStorage.clear();
-    localStorage.clear();
-    this.router.navigateByUrl('/');
+    this.getTopPosts()
+    this.getMessages()
   }
 
   getUserCount() {
@@ -59,13 +48,35 @@ export class DashboardComponent implements OnInit {
   
   getReportCount() {
     this.api.getReportedPosts().subscribe((res: any) => {
-      this.reportCount = res.length;
-      console.log(res)
+      this.reportCount = res.reportedPostCount;
+    });
+  }
+  
+  getTopPosts() {
+    this.api.getBlogsApi().subscribe((res: any) => {
+      const filteredPosts = res.filter((post: any) => 
+        post.likes.length > 0 || post.comments.length > 0
+      );
+  
+      const sortedPosts = filteredPosts.sort((a: any, b: any) => {
+        const likesDifference = b.likes.length - a.likes.length;
+        if (likesDifference !== 0) {
+          return likesDifference;
+        }
+        return b.comments.length - a.comments.length;
+      });
+  
+      this.topPosts = sortedPosts.slice(0, 3);
+    });
+  }
+  
+  
+  getMessages() {
+    this.api.getMessages().subscribe((res: any) => {
+      const latest = res.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      this.latestMessages = latest.slice(0, 3)
     });
   }
   
 
-  
-  
-  
 }

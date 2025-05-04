@@ -7,8 +7,10 @@ import { AllUsersComponent } from './all-users/all-users.component';
 import { AllPostsComponent } from './all-posts/all-posts.component';
 import { AllCommentsComponent } from './all-comments/all-comments.component';
 import { AllMessagesComponent } from './all-messages/all-messages.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from '../pipes/search.pipe';
+import { NavComponent } from './nav/nav.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -18,12 +20,14 @@ import { NavbarComponent } from './navbar/navbar.component';
     AllPostsComponent,
     AllCommentsComponent,
     AllMessagesComponent,
-    SidebarComponent,
-    NavbarComponent,
+    NavComponent,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    SearchPipe,
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }

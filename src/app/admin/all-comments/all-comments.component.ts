@@ -1,19 +1,35 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-all-comments',
   templateUrl: './all-comments.component.html',
-  styleUrl: './all-comments.component.css'
 })
 export class AllCommentsComponent {
-  isSideBarOpen: boolean = false;
-  columnWidth: string = "col-lg-12 p-0";
+  Allcomments: any;
 
-  constructor() {}
+  constructor(private api: ApiService) {}
 
-  menuBtnClick() {
-    this.isSideBarOpen = !this.isSideBarOpen;
-    // Adjust column width based on sidebar state
-    this.columnWidth = this.isSideBarOpen ? "col-lg-10 p-0" : "col-lg-12 p-0";
+  ngOnInit() {
+    this.getComments();
+
+  }
+
+  getComments() {
+    this.api.getAllComments().subscribe((res: any) => {
+      this.Allcomments = res;
+      console.log(this.Allcomments);
+    });
+  }
+
+
+  deleteComment(postId: string, CommentId: string) {
+    const confirmResult = confirm("Do you want to delete this Comment?");
+    if (confirmResult) {
+      this.api.deleteAdminComment(postId, CommentId).subscribe((res: any) => {
+        alert(res);
+        this.getComments(); 
+      });
+    }
   }
 }
