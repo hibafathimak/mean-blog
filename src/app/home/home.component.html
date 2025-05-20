@@ -84,7 +84,7 @@
           <div class="w-full flex-shrink-0">
             <img
               [src]="environment.serverUrl + '/uploads/' + blog.coverImage"
-              alt="Blog"
+              alt="Blog Image"
               [routerLink]="'/blogs/' + blog._id"
               class="w-full h-48 object-cover object-center rounded-lg cursor-pointer"
             />
@@ -136,7 +136,7 @@
       <div class="overflow-hidden">
         <img
           [src]="environment.serverUrl + '/uploads/' + blog.coverImage"
-          alt="Travel"
+          alt="Blog Image"
           [routerLink]="'/blogs/' + blog._id"
           class="w-full cursor-pointer rounded-lg h-60 object-cover object-center"
         />
@@ -154,7 +154,7 @@
                   ? environment.serverUrl + '/uploads/' + blog.author.profilePic
                   : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
               "
-              alt="{{ blog.author.username }}"
+              alt="{{ blog.author.username }} profile"
               class="w-8 h-8 rounded-full mr-2"
             />
             <span class="text-sm text-gray-600">{{
