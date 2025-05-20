@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  serverUrl: string = 'http://localhost:3000';
+  serverUrl: string = 'https://mean-blog-server.onrender.com/';
 
   constructor(private http: HttpClient) {}
 
